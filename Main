@@ -1,0 +1,47 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+
+    public static void main(String[] args) {
+
+        Scanner change = new Scanner(System.in);
+        float dollars = 0.0f;
+
+        do {
+            System.out.println("Enter change required");
+            dollars = change.nextFloat();
+        } while (dollars < 0.0);
+
+        int cents = Math.round(dollars * 100);
+
+        int remainder = 0;
+        int count = 0;
+
+
+            while (cents / 25 >= 1) {
+                count = (cents / 25);
+                remainder = cents % 25;
+                cents = remainder;
+            } while (cents / 10 >= 1) {
+                count = (count + cents/10);
+                remainder = cents % 10;
+                cents = remainder;
+            } while (cents / 5 >= 1) {
+                count = (count + cents / 5);
+                remainder = cents % 5;
+                cents = remainder;
+            } while (cents / 1 >= 1) {
+                count = (count + cents/1) ;
+                break;
+            }
+
+
+        System.out.println(count + " coins needed");
+
+
+
+    }
+}
